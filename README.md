@@ -26,4 +26,4 @@ $ pm2 start index.js --name bot
 ```
 
 ## Authors
-[@lamberthrumpaidus](https://github.com/lamberthrumpaidus)
+[lamberthrumpaidus](https://github.com/lamberthrumpaidus)
