@@ -91,13 +91,15 @@ async function Maelyn() {
   
           console.log(`\nSender: ${sender}\nPesan: ${body}`);
           if (chatType === "private") {
-              const response = await MealynAPI(body);
               if (body.startsWith("!octa")) {
+                  let question = body.split("!octa");
+                  const response = await MealynAPI(question[1]);
                   await socket.sendMessage(sender, { text: response });
               }
           } else if (chatType === "group") {
               if (body.startsWith("!octa")) {
-                  const response = await MealynAPI(body);
+                  let question = body.split("!octa");
+                  const response = await MealynAPI(question[1]);
                   await socket.sendMessage(sender, { text: response });
               }
           }
