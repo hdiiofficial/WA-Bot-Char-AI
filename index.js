@@ -91,21 +91,14 @@ async function Maelyn() {
   
           console.log(`\nSender: ${sender}\nPesan: ${body}`);
           if (chatType === "private") {
-              if (m.key.fromMe) {
-                  return;
-              }
               const response = await MealynAPI(body);
-              if (response && response !== body) {
+              if (body.startsWith("!octa")) {
                   await socket.sendMessage(sender, { text: response });
               }
           } else if (chatType === "group") {
-              const tagbot = jidNormalizedUser(socket.user.jid);
-              const botMentioned = "@" + tagbot.split("@")[0];
-              if (body.includes(botMentioned)) {
+              if (body.startsWith("!octa")) {
                   const response = await MealynAPI(body);
-                  if (response && response !== body) {
-                      await socket.sendMessage(sender, { text: response });
-                  }
+                  await socket.sendMessage(sender, { text: response });
               }
           }
       } catch (err) {
